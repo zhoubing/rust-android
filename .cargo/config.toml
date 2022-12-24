@@ -1,0 +1,9 @@
+[build]
+target = "armv7-linux-androideabi"
+# 还可以指定链接器类型和静态链接
+# 不过有点诡异的是，静态链接后使用file检测出来是动态链接的，ldd检测到的则是静态链接的
+rustflags = ["-C", "linker-flavor=gcc", "-C", "target-feature=+crt-static"]
+# rustflags = ["-C", "link-args=-fPIC"]
+
+[target.armv7-linux-androideabi]
+linker = "/opt/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi30-clang"
